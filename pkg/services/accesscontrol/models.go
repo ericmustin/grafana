@@ -41,6 +41,10 @@ func (r *Role) IsFixed() bool {
 	return strings.HasPrefix(r.Name, FixedRolePrefix)
 }
 
+func (r *Role) IsBasic() bool {
+	return strings.HasPrefix(r.Name, BasicRolePrefix) || strings.HasPrefix(r.UID, BasicRoleUIDPrefix)
+}
+
 func (r *Role) GetDisplayName() string {
 	if r.IsFixed() && r.DisplayName == "" {
 		r.DisplayName = fallbackDisplayName(r.Name)
