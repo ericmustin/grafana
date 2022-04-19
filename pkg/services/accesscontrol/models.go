@@ -118,6 +118,10 @@ func (r *RoleDTO) IsFixed() bool {
 	return strings.HasPrefix(r.Name, FixedRolePrefix)
 }
 
+func (r *RoleDTO) IsBasic() bool {
+	return strings.HasPrefix(r.Name, BasicRolePrefix) || strings.HasPrefix(r.UID, BasicRoleUIDPrefix)
+}
+
 func (r *RoleDTO) GetDisplayName() string {
 	if r.IsFixed() && r.DisplayName == "" {
 		r.DisplayName = fallbackDisplayName(r.Name)
